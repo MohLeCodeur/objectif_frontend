@@ -55,7 +55,7 @@ class RegisterPage extends React.Component {
 
         axios.post('http://localhost:8000/api/register', bodyFormData)
             .then((response) => {
-                localStorage.setItem('token', response.data.api_token);
+                
                 this.setState({ redirect: true });
             })
             .catch((error) => {
