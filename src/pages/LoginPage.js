@@ -1,28 +1,32 @@
 // src/pages/LoginPage.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase'; // Assurez-vous que le chemin est correct
+import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
-      // Gérer la connexion
-      console.log(response.data);
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/dashboard');
     } catch (error) {
-      console.error('Erreur de connexion', error);
+      console.error(error);
+      alert('Login failed: ' + error.message);
     }
   };
 
   return (
-    <div>
-      <h1>Connexion</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-page">
+      <h2>Connexion</h2>
+      <form onSubmit={handleLogin}>
         <div>
-          <label>Email</label>
+          <label>Email:</label>
           <input
             type="email"
             value={email}
@@ -30,7 +34,7 @@ const LoginPage = () => {
           />
         </div>
         <div>
-          <label>Mot de passe</label>
+          <label>Mot de passe:</label>
           <input
             type="password"
             value={password}
