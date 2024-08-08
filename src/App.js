@@ -7,14 +7,14 @@ import Dashboard from './pages/Dashboard';
 import GoalPage from './pages/GoalPage';
 import HabitPage from './pages/HabitPage';
 import CalendarPage from './pages/CalendarPage';
-import Sidebar from './components/Sidebar';
+
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="app">
-        <Sidebar />
+     
         <div className="main-content">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
