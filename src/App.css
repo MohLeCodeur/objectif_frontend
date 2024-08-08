@@ -1,0 +1,29 @@
+/* src/App.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.app {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 250px; /* La même largeur que la barre latérale */
+  padding: 20px;
+  flex-grow: 1;
+}
+
+footer {
+  background-color: #1e3c72;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: calc(100% - 250px);
+  bottom: 0;
+  left: 250px;
+}
